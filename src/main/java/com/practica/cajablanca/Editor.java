@@ -17,9 +17,6 @@ public class Editor {
 	public Editor() {
 		editor = new SingleLinkedListImpl<AbstractSingleLinkedListImpl<String>>();
 	}
-	public Editor(AbstractSingleLinkedListImpl<AbstractSingleLinkedListImpl<String>> editor){
-		this.editor=editor;
-	}
 
 	/**
 	 * 

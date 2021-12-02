@@ -8,6 +8,9 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
 import java.util.EmptyStackException;
 import java.util.NoSuchElementException;
 import java.util.Stack;
@@ -28,11 +31,12 @@ public class Prueba {
         });
     }
     @Test
-    public void editorWithLineNumPalabras() throws EmptyCollectionException {
-        AbstractSingleLinkedListImpl<AbstractSingleLinkedListImpl<String>> editor= new SingleLinkedListImpl<AbstractSingleLinkedListImpl<String>>();
-        Editor Editor = new Editor(editor);
-        SingleLinkedListImpl<String>line=new SingleLinkedListImpl<String>("hola");
-        editor.addLast(line);
+    public void editorWithLineNumPalabras() throws EmptyCollectionException, IOException {
+        Writer fileWriter = new FileWriter("test.txt", false);
+        fileWriter.write("hello");
+        fileWriter.close();
+        Editor Editor = new Editor();
+        Editor.leerFichero("test.txt");
         assertEquals(1,Editor.numPalabras());
 
     }
