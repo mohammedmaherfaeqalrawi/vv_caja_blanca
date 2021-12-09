@@ -24,20 +24,30 @@ import org.junit.jupiter.api.Test;
 public class Prueba {
     // Tests caja blanca for numPalabras
     @Test
-    public void emptyEditorNumPalabras(){
+    public void NumPalabrasCamino1(){
         Editor editor = new Editor();
         assertThrows(EmptyCollectionException.class, () -> {
             editor.numPalabras();
         });
     }
     @Test
-    public void editorWithLineNumPalabras() throws EmptyCollectionException, IOException {
+    public void NumPalabrasCamino4() throws EmptyCollectionException, IOException {
         Writer fileWriter = new FileWriter("test.txt", false);
-        fileWriter.write("hello");
+        fileWriter.write("\n");
         fileWriter.close();
-        Editor Editor = new Editor();
-        Editor.leerFichero("test.txt");
-        assertEquals(1,Editor.numPalabras());
+        Editor editor = new Editor();
+        editor.leerFichero("test.txt");
+        assertEquals(0,editor.numPalabras());
+
+    }
+    @Test
+    public void NumPalabrasCamino5() throws EmptyCollectionException, IOException {
+        Writer fileWriter = new FileWriter("test.txt", false);
+        fileWriter.write("palabra");
+        fileWriter.close();
+        Editor editor = new Editor();
+        editor.leerFichero("test.txt");
+        assertEquals(1,editor.numPalabras());
 
     }
 
