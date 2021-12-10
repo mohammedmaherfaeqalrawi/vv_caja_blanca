@@ -21,7 +21,7 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 
-public class Prueba {
+public class TestPrueba {
     // Tests caja blanca for numPalabras
     @Test
     public void NumPalabrasCamino1(){
