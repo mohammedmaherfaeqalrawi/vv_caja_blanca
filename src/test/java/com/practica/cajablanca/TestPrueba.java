@@ -22,6 +22,26 @@ import org.junit.jupiter.api.Test;
 
 
 public class TestPrueba {
+    //Tests cajaBlanca for mayorLongitud
+    @Test
+    void mayorLongitudCamino1() throws EmptyCollectionException, IOException {
+        Writer fileWriter = new FileWriter("test.txt", false);
+        fileWriter.write("20");
+        fileWriter.close();
+        Editor editor = new Editor();
+        editor.leerFichero("test.txt");
+        assertEquals("20", editor.mayorLongitud());
+    }
+
+    @Test
+    void mayorLongitudCamino2() throws EmptyCollectionException, IOException {
+        Writer fileWriter = new FileWriter("test.txt", false);
+        fileWriter.write("20\n4500");
+        fileWriter.close();
+        Editor editor = new Editor();
+        editor.leerFichero("test.txt");
+        assertEquals("4500", editor.mayorLongitud());
+    }
     // Tests caja blanca for numPalabras
     @Test
     public void NumPalabrasCamino1(){
