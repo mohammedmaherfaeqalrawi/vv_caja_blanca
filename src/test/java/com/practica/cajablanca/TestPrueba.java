@@ -95,33 +95,5 @@ public class TestPrueba {
         editor.leerFichero("test.txt");
         assertEquals(1,editor.numPalabras(1,2,"yepee"));
     }
-    // Tests caja blanca for numPalabras()
-    @Test
-    public void NumPalabrasCamino1(){
-        Editor editor = new Editor();
-        assertThrows(EmptyCollectionException.class, () -> {
-            editor.numPalabras();
-        });
-    }
-    @Test
-    public void NumPalabrasCamino4() throws EmptyCollectionException, IOException {
-        Writer fileWriter = new FileWriter("test.txt", false);
-        fileWriter.write("\n");
-        fileWriter.close();
-        Editor editor = new Editor();
-        editor.leerFichero("test.txt");
-        assertEquals(0,editor.numPalabras());
-
-    }
-    @Test
-    public void NumPalabrasCamino5() throws EmptyCollectionException, IOException {
-        Writer fileWriter = new FileWriter("test.txt", false);
-        fileWriter.write("palabra");
-        fileWriter.close();
-        Editor editor = new Editor();
-        editor.leerFichero("test.txt");
-        assertEquals(1,editor.numPalabras());
-
-    }
 
 }
