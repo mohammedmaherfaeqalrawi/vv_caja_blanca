@@ -22,6 +22,8 @@ import org.junit.jupiter.api.Test;
 
 
 public class TestPrueba {
+    
+    
     //Tests cajaBlanca for mayorLongitud
     @Test
     void mayorLongitudCamino1() throws EmptyCollectionException {
@@ -37,6 +39,8 @@ public class TestPrueba {
         editor.leerFichero("test.txt");
         assertEquals("4500", editor.mayorLongitud());
     }
+    
+    
     // Tests caja blanca for public int numPalabras(int inicio, int fin, String palabra);
     @Test
     public void NumPalabrasParametrizadaCamino1() throws IOException{
@@ -94,6 +98,64 @@ public class TestPrueba {
         Editor editor = new Editor();
         editor.leerFichero("test.txt");
         assertEquals(1,editor.numPalabras(1,2,"yepee"));
+    }
+    
+    
+    //Test del sustiruir palabra
+    @Test
+    @DisplayName("Test sustituir palabra en lista vacía")
+    public void sustituirPalabraCamino1() throws EmptyCollectionException, IOException {
+
+        Writer sustituirpalabra = new FileWriter("sustituirpalabra.txt", false);
+        //sustituirpalabra.write("200");
+        sustituirpalabra.close();
+
+        Editor edit = new Editor();
+        edit.leerFichero("sustituirpalabra.txt");
+        edit.sustituirPalabra("200", "250");
+        assertEquals(true, edit.editIsEmpty());
+    }
+
+    //Camino 2 no es factible por lo que no se prueba.
+
+    @Test
+    @DisplayName("Test sustituir palabra")
+    public void sustituirPalabraCamino3() throws EmptyCollectionException, IOException {
+        Writer sustituirpalabra = new FileWriter("sustituirpalabra.txt", false);
+        sustituirpalabra.write("200");
+        sustituirpalabra.close();
+
+        Editor edit = new Editor();
+        edit.leerFichero("sustituirpalabra.txt");
+        edit.sustituirPalabra("200", "250");
+        assertEquals("250", edit.getLinea(1).getAtPos(1));
+    }
+
+    @Test
+    @DisplayName("Test sustituir una palabra que no existe")
+    public void sustituirPalabraCamino4() throws EmptyCollectionException, IOException {
+        Writer sustituirpalabra = new FileWriter("sustituirpalabra.txt", false);
+        sustituirpalabra.write("220");
+        sustituirpalabra.close();
+
+        Editor edit = new Editor();
+        edit.leerFichero("sustituirpalabra.txt");
+        edit.sustituirPalabra("200", "250");
+        assertEquals("220", edit.getLinea(1).getAtPos(1));
+    }
+
+    @Test
+    @DisplayName("Test sustituir palabra con más de un elemento en el editor")
+    public void sustituirPalabraCamino5() throws EmptyCollectionException, IOException {
+        Writer sustituirpalabra = new FileWriter("sustituirpalabra.txt", false);
+        sustituirpalabra.write("220\n300");
+        sustituirpalabra.close();
+
+        Editor edit = new Editor();
+        edit.leerFichero("sustituirpalabra.txt");
+        edit.sustituirPalabra("220","250");
+        assertEquals("250", edit.getLinea(1).getAtPos(1));
+        assertEquals("300", edit.getLinea(2).getAtPos(1));
     }
 
 }
